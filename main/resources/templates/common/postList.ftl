@@ -1,7 +1,7 @@
 <!--- \\\\\\\Post-->
 <#include "securityPage.ftl">
 <div class="row mx-2">
-    <#if posts??>
+
     <#list posts as post>
         <div class="card m-2">
             <div class="row">
@@ -20,18 +20,15 @@
                                 <div class="card-text">
                                     ${post.text}
                                     <#if user??>
-                                        <a href="/posts/user-posts/${post.author.id}">${post.authorName}</a>
-                                    <#else>${post.authorName}
+                                        <a href="/posts/user-posts/${post.author.id!""}">${post.authorName!''}</a>
+                                    <#else>${post.authorName!''}
                                     </#if>
 
                                 </div>
                                 <div class="card-footer bg-transparent">
                                     <small class="text-muted">
-                                        ${post.createTime!''} ${post.createDate!''}
+
                                     </small>
-                                    <#if post.tags??>
-                                     <!--   <a class="" href="/posts/search/${post.tags!''}">#${post.tags!''}</a> -->
-                                    </#if>
                                     <#if post.tagList??>
                                     <#list post.tagList as t>
                                         <a class="" href="/posts/search/${t.textTag!''}">#${t.textTag!''}</a>
@@ -51,9 +48,9 @@
             </div>
 
         </div>
-    </#list>
         <#else >
             Постов нет
-    </#if>
+    </#list>
+
 </div>
 

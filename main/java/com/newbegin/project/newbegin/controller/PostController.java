@@ -67,6 +67,7 @@ public class PostController {
         }
 
         model.addAttribute("posts", postService.postList());
+        model.addAttribute("tags",  postService.toptags());
 
         return "posts";
     }
@@ -78,6 +79,7 @@ public class PostController {
 
         model.addAttribute("tags", postService.toptags());
         model.addAttribute("posts", postService.postList());
+
         return "posts";
     }
 
@@ -89,6 +91,7 @@ public class PostController {
             posts = postService.findPostByText(text);
         }
         model.addAttribute("posts", posts);
+        model.addAttribute("tags",  postService.toptags());
         return "posts";
     }
 
@@ -97,6 +100,7 @@ public class PostController {
         List<Post> posts = postService.findPostsByTag(tag);
 
         model.addAttribute("posts", posts);
+        model.addAttribute("tags",  postService.toptags());
         return "posts";
     }
 

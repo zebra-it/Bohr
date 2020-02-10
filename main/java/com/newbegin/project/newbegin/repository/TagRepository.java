@@ -1,7 +1,6 @@
 package com.newbegin.project.newbegin.repository;
 
 import com.newbegin.project.newbegin.model.Tag;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +19,6 @@ public interface TagRepository extends CrudRepository<Tag, Long> {
     List<Long> getPostId(@Param("textTag") String textTag);
 
     @Query(value = "SELECT count(*) FROM test.tags group by text_tag",
-    nativeQuery = true)
+            nativeQuery = true)
     List<Integer> countTags();
 }

@@ -5,8 +5,6 @@ import com.newbegin.project.newbegin.model.Tag;
 import com.newbegin.project.newbegin.model.User;
 import com.newbegin.project.newbegin.repository.PostRepository;
 import com.newbegin.project.newbegin.repository.TagRepository;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -36,10 +34,6 @@ public class PostService {
 
     public void addNewPost(Post post, String typeTags, User user, Model model) {
 
-        LocalTime localTime = new LocalTime();
-        String date = new LocalDate().toString();
-        post.setCreateTime(localTime.getHourOfDay() + ":" + localTime.getMinuteOfHour());
-        post.setCreateDate(date);
         post.setAuthor(user);
         if (typeTags != null && !typeTags.isEmpty()) {
             List<String> tagsList = Arrays.asList(typeTags.split("\\s"));
@@ -56,11 +50,19 @@ public class PostService {
 
     public List<Post> findPostByText(String text) {
         List<Post> textContains = postRepository.findByTextContains(text);
-        if (textContains.isEmpty()) {
-            return null;
-        }
+        List<Post> tagContains = findPostsByTag(text);
+        List<Post> result = new ArrayList<>();
 
-        return textContains;
+        if (textContains.isEmpty() && !tagContains.isEmpty()) {
+            result.addAll(findPostsByTag(text));
+        }
+        if (tagContains.isEmpty() && !textContains.isEmpty()) {
+            result.addAll(textContains);
+        }
+        result.addAll(textContains);
+        result.addAll(tagContains);
+
+        return result;
     }
 
     public List<String> toptags() {
@@ -74,8 +76,8 @@ public class PostService {
             posts.add(postRepository.getPostById(id));
         }
         return posts;
-
     }
+
 
 
 }

@@ -31,18 +31,12 @@ public class ManagerController {
 
     @GetMapping("/postStatistics")
     public String getPosts(Model model) {
-        List<Integer> countPostsDate = postRepository.countPostsByDate();
-        List<Integer> countPostsTime = postRepository.countPostsByTime();
-        List<String> datePosts = postRepository.datePosts();
-        List<String> timePosts = postRepository.getTime();
+
+
+
 
         List<String> allTags = tagRepository.getAllTags();
 
-
-        model.addAttribute("datePosts", datePosts);
-        model.addAttribute("countPostsDate", countPostsDate);
-        model.addAttribute("countPostsTime", countPostsTime);
-        model.addAttribute("timePosts", timePosts);
         model.addAttribute("allTags", allTags);
 
         return "postStatistics";

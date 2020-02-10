@@ -14,23 +14,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     void deleteById(Long id);
 
 
-    @Query("select  p.createTime from Post p order by p.createTime")
-    List<String> getTime();
-
-    @Query(value = "select count(*)from posts group by create_date",
-            nativeQuery = true)
-    List<Integer> countPostsByDate();
-
-    @Query(value = "select count(*)from posts group by create_time",
-            nativeQuery = true)
-    List<Integer> countPostsByTime();
-
-
-
-    @Query("select  p.createDate from Post p group by p.createDate")
-    List<String> datePosts();
-
-
     List<Post> findByTextContains(String text);
 
     @Query("from Post p where p.id=:id")

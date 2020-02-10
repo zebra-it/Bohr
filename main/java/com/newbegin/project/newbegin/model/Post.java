@@ -47,9 +47,6 @@ public class Post {
         return author != null ? author.getUsername() : "<none>";
     }
 
-    private String createDate;
-    private String createTime;
-
     public Post(String text, User user) {
         this.author = user;
         this.text = text;
