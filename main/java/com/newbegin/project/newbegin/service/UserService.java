@@ -168,4 +168,8 @@ public class UserService implements UserDetailsService {
     public String isEmailFree(String email) {
         return userRepository.getEmail(email);
     }
+
+    public List<User> findUser(String username){
+        return userRepository.findByUsernameContains(username);
+    }
 }

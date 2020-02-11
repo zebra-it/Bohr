@@ -32,7 +32,19 @@ public class UserController {
     @GetMapping
     public String userList(Model model) {
         Iterable<User> users = userService.findAll();
+
         model.addAttribute("users", users);
+        return "userList";
+    }
+
+    @GetMapping("/search")
+    public String searchPost(@RequestParam(required = false, defaultValue = "") String username, Model model) {
+        List<User> users = userService.findAll();
+        if (username != null && !username.isEmpty()) {
+            users = userService.findUser(username);
+        }
+        model.addAttribute("users", users);
+
         return "userList";
     }
 

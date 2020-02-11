@@ -18,7 +18,7 @@
             </#if>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="/user">Список юзеров</a>
+                    <a class="nav-link" href="/user">Список пользователей</a>
                 </li>
             <#if isAdmin>
                 <li class="nav-item">

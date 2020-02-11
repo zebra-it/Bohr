@@ -3,8 +3,23 @@
 <@c.page true>
 
 
-    <div class="container">
+    <div class="container-fluid gedf-wrapper">
+        <div class="row">
+        <div class="col-sm-3">
+        <form action="/user/search" method="get">
+            <div class="input-group mb-3 col-sm">
+                <div class="input-group-prepend">
 
+                    <button class="btn btn-outline-primary input-group-text" type="submit" id="button-addon2">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <input type="text" class="form-control" name="username">
+
+            </div>
+        </form>
+        </div>
+        <div class="col-md-5">
         <h4>Список пользователей</h4>
         <table class="table">
             <thead class="thead-dark">
@@ -21,7 +36,7 @@
             <tbody>
             <#list users as user>
                 <tr>
-                    <td> <a href="posts/user-posts/${user.id}">${user.username}</a></td>
+                    <td><a href="posts/user-posts/${user.id}">${user.username}</a></td>
 
                     <td>${user.email}</td>
                     <#if isAdmin>
@@ -38,5 +53,7 @@
 
             </tbody>
         </table>
+        </div>
+        </div>
     </div>
 </@c.page>

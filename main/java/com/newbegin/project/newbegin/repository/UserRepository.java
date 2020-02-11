@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface UserRepository extends CrudRepository<User, Long> {
 
     User findByUsername(String username);
@@ -21,5 +23,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("select count(u) from User u")
     Integer countUsers();
 
-
+        List<User> findByUsernameContains(String username);
 }
