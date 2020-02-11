@@ -5,6 +5,7 @@ import com.newbegin.project.newbegin.model.User;
 import com.newbegin.project.newbegin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +28,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // @PreAuthorize("hasAuthority('ADMIN')")
+
     @GetMapping
     public String userList(Model model) {
         Iterable<User> users = userService.findAll();
@@ -35,7 +36,7 @@ public class UserController {
         return "userList";
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/delete/{id}")
     public String deletePost(@PathVariable long id, Model model) {
         userService.delete(id);
@@ -44,7 +45,7 @@ public class UserController {
         return "userList";
     }
 
-    //@PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("{user}")
     public String userEditForm(@PathVariable User user, Model model) {
         model.addAttribute("roles", Role.values());
@@ -52,7 +53,7 @@ public class UserController {
         return "userEdit";
     }
 
-    // @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
     public String userSave(@RequestParam String username,
                            @RequestParam Map<String, String> form,

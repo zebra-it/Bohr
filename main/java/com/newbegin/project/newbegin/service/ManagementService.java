@@ -48,6 +48,10 @@ public class ManagementService {
         return postRepository.countUsersWithPosts();
     }
 
+    public Integer countUsersWithoutPosts(){
+        return countUsers() - countUsersWithPosts();
+    }
+
 
     public Map<String, Integer> getPostsStatistics(){
         List<String> date = postRepository.getDate();

@@ -16,11 +16,11 @@
                     <a class="nav-link" href="/posts/user-posts/${user.id!''}">Профиль</a>
                 </li>
             </#if>
-            <#if isAdmin>
+
                 <li class="nav-item active">
                     <a class="nav-link" href="/user">Список юзеров</a>
                 </li>
-
+            <#if isAdmin>
                 <li class="nav-item">
                     <a class="nav-link" href="/statistics">Статистика</a>
                 </li>

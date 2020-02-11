@@ -24,7 +24,7 @@
                 <td>${users}</td>
 
                 <td>${usersWithPosts}</td>
-                <td>без постов</td>
+                <td>${usersWithoutPosts}</td>
                 <td>${allPosts}</td>
 
             </tr>

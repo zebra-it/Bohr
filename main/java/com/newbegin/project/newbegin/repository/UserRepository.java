@@ -20,4 +20,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     @Query("select count(u) from User u")
     Integer countUsers();
+
+
 }

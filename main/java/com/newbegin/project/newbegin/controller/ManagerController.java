@@ -22,6 +22,7 @@ public class ManagerController {
         model.addAttribute("users", managementService.countUsers());
         model.addAttribute("allPosts", managementService.countPostsByUsers());
         model.addAttribute("usersWithPosts", managementService.countUsersWithPosts());
+        model.addAttribute("usersWithoutPosts", managementService.countUsersWithoutPosts());
         model.addAttribute("tagsStatistics", managementService.getTagsStatistics());
 
 
