@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -47,22 +46,13 @@ public class PostService {
         postRepository.save(post);
     }
 
-
     public List<Post> findPostByText(String text) {
-        List<Post> textContains = postRepository.findByTextContains(text);
-        List<Post> tagContains = findPostsByTag(text);
-        List<Post> result = new ArrayList<>();
-
-        if (textContains.isEmpty() && !tagContains.isEmpty()) {
-            result.addAll(findPostsByTag(text));
+        List<Post> posts = postRepository.findByTextContains(text);
+        if (posts.isEmpty()) {
+            posts = findPostsByTag(text);
         }
-        if (tagContains.isEmpty() && !textContains.isEmpty()) {
-            result.addAll(textContains);
-        }
-        result.addAll(textContains);
-        result.addAll(tagContains);
 
-        return result;
+        return posts;
     }
 
     public List<String> toptags() {
@@ -72,9 +62,6 @@ public class PostService {
     public List<Post> findPostsByTag(String textTag) {
         return tagRepository.findPostByTag(textTag);
     }
-
-
-
 
 
 }

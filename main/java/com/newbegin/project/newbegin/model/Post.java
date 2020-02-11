@@ -15,6 +15,7 @@ import java.util.List;
 @Entity
 @Table(name = "posts")
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -43,7 +44,6 @@ public class Post {
         tagList.add(tag);
         tag.setPost(this);
     }
-
 
     private String filename;
 
