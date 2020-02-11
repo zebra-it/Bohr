@@ -21,7 +21,7 @@ public interface TagRepository extends CrudRepository<Tag, Long> {
     @Query("select count(t.textTag) from Tag t group by t.textTag")
     List<Integer> countTag();
 
-    @Query("select distinct t.textTag from Tag t  where t.textTag!=''")
+    @Query("select t.textTag from Tag t group by t.textTag")
     List<String> getTags();
 
 }

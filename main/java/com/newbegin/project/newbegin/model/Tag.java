@@ -4,7 +4,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 
 
 @Data
@@ -17,9 +16,6 @@ public class Tag {
     private Long id;
 
     private String textTag;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createAt = new Date();
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Post post;

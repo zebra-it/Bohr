@@ -11,6 +11,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,8 +32,11 @@ public class User implements UserDetails {
             ", содержать верхний и нижний регистр, цифры и символы")
     private String password;
 
-    private String createDate;
-    private String createTime;
+    @Temporal(TemporalType.DATE)
+    private Date createdAt = new Date();
+
+    @Temporal(TemporalType.TIME)
+    private Date creatededAtTime = new Date();
 
     @NotBlank
     @Email(message = "Неправильный почтовый адрес")

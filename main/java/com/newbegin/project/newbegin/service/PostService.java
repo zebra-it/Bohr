@@ -70,9 +70,10 @@ public class PostService {
     }
 
     public List<Post> findPostsByTag(String textTag) {
-        List<Post> posts = tagRepository.findPostByTag(textTag);
-        return posts;
+        return tagRepository.findPostByTag(textTag);
     }
+
+
 
 
 

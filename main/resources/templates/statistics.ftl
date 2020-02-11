@@ -33,11 +33,8 @@
     </table>
 
 <hr>
-<if datas??>
-    <#list datas as d>
-        ${d}
-    </#list>
-</if>
+
+
 </div>
 
 </@c.page>

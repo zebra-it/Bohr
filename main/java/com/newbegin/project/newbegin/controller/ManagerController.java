@@ -22,16 +22,19 @@ public class ManagerController {
         model.addAttribute("users", managementService.countUsers());
         model.addAttribute("allPosts", managementService.countPostsByUsers());
         model.addAttribute("usersWithPosts", managementService.countUsersWithPosts());
-        model.addAttribute("datas", managementService.datas());
+        model.addAttribute("tagsStatistics", managementService.getTagsStatistics());
+
+
         return "statistics";
     }
 
     @GetMapping(value = "/postStatistics")
     public String getPosts(Model model) {
         Map<String, Integer> tagsStatistics = managementService.getTagsStatistics();
-
+        Map<String, Integer> postsStatistics = managementService.getPostsStatistics();
 
         model.addAttribute("tagsStatistics", tagsStatistics);
+        model.addAttribute("postsStatistics", postsStatistics);
 
         return "postStatistics";
     }

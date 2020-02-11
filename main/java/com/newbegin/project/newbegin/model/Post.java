@@ -27,8 +27,12 @@ public class Post {
     @JoinColumn(name = "user_id")
     private User author;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date postedAt = new Date();
+
+    @Temporal(TemporalType.TIME)
+    private Date postedAtTime = new Date();
+
 
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "post",

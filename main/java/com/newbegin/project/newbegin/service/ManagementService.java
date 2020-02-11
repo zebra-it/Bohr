@@ -48,7 +48,10 @@ public class ManagementService {
         return postRepository.countUsersWithPosts();
     }
 
-    public List<String> datas(){
-        return postRepository.datas();
+
+    public Map<String, Integer> getPostsStatistics(){
+        List<String> date = postRepository.getDate();
+        List<Integer> countByDate = postRepository.countByDate();
+        return zipToMap(date, countByDate);
     }
 }

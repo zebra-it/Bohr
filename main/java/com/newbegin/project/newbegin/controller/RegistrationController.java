@@ -22,7 +22,6 @@ import java.util.regex.Pattern;
 @Controller
 public class RegistrationController {
 
-
     @Autowired
     private UserService userService;
 
@@ -54,6 +53,7 @@ public class RegistrationController {
             model.addAttribute("usernameError", "Пользователь с таким именем существует");
             return "reg";
         }
+
 
         return "redirect:/login";
     }

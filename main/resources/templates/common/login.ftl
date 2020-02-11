@@ -65,7 +65,7 @@
 
             </#if>
         </div>
-        ${message?if_exists}
+
     </div>
 </#macro>
 
