@@ -1,7 +1,9 @@
 package com.newbegin.project.newbegin.repository;
 
 import com.newbegin.project.newbegin.model.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
@@ -13,6 +15,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     void deleteById(long id);
 
-   /* @Query("select u.email from User u where u.email = :email")
-    String getEmail(@Param("email") String email);*/
+    @Query("select u.email from User u where u.email = :email")
+    String getEmail(@Param("email") String email);
+
+    @Query("select count(u) from User u")
+    Integer countUsers();
 }

@@ -19,4 +19,12 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("from Post p where p.id=:id")
     Post getPostById(@Param("id") Long id);
 
+    @Query("select count(p) from Post p")
+    Integer countPostsByUsers();
+
+    @Query("select count(distinct p.author) from Post p")
+    Integer countUsersWithPosts();
+
+    @Query("select p.postedAt from Post p")
+    List<String> datas();
 }

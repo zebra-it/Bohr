@@ -20,7 +20,7 @@
     </div>
 
     <script inline="javascript">
-        $(function () {
+/*        $(function () {
             Highcharts.chart('container', {
                 chart: {
                     type: 'column'
@@ -32,9 +32,7 @@
 
                 xAxis: {
                     categories: [
-                        <#list datePosts as key>
-                        '${key}',
-                        </#list>
+
                     ],
                     crosshair: true,
                     labels: {
@@ -64,9 +62,7 @@
                     name: 'Дата',
                     colorByPoint: true,
                     data: [
-                        <#list countPostsDate as key>
-                        ${key},
-                        </#list>
+
                     ]
                 }],
 
@@ -84,9 +80,7 @@
 
                 xAxis: {
                     categories: [
-                        <#list timePosts as key>
-                        '${key}',
-                        </#list>
+
                     ],
 
                 },
@@ -113,14 +107,12 @@
                     name: 'Время',
                     colorByPoint: true,
                     data: [
-                        <#list countPostsTime as key>
-                        ${key},
-                        </#list>
+
                     ]
                 }],
 
             });
-        });
+        });*/
         $(function () {
             Highcharts.chart('container2', {
                 chart: {
@@ -132,7 +124,7 @@
 
                 xAxis: {
                     categories: [
-                        <#list textTags as key>
+                        <#list tagsStatistics?keys as key>
                         '${key}',
                         </#list>
                     ],
@@ -161,8 +153,8 @@
                     name: 'время',
                     colorByPoint: true,
                     data: [
-                        <#list countTags as key>
-                        ${key},
+                        <#list tagsStatistics?keys as key>
+                        ${tagsStatistics[key]},
                         </#list>
                     ]
                 }],

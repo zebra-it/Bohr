@@ -46,7 +46,7 @@
                                     <div class="form-group">
                                         <label class="sr-only" for="tag">TypeTag</label>
                                         <input type="text" id="tag" class="form-control" name="typeTags"
-                                               placeholder="TypeTags">
+                                               placeholder="Тэги">
                                     </div>
 
                                     <div class="input-group mb-3">

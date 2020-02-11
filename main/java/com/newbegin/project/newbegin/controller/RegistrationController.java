@@ -45,10 +45,10 @@ public class RegistrationController {
             model.mergeAttributes(errors);
             return "reg";
         }
-      /*  if(userService.isEmailFree(user.getEmail())!=null){
+        if(userService.isEmailFree(user.getEmail())!=null){
             model.addAttribute("emailError", "Почта уже используется");
             return "reg";
-        }*/
+        }
 
         if (!userService.addUser(user)) {
             model.addAttribute("usernameError", "Пользователь с таким именем существует");

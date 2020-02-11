@@ -158,8 +158,7 @@ public class UserService implements UserDetailsService {
         user.getFollowers().remove(currentUser);
         userRepository.save(user);
     }
-/*
     public String isEmailFree(String email) {
         return userRepository.getEmail(email);
-    }*/
+    }
 }

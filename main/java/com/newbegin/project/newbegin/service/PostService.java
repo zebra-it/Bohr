@@ -70,11 +70,7 @@ public class PostService {
     }
 
     public List<Post> findPostsByTag(String textTag) {
-        List<Long> postId = tagRepository.getPostId(textTag);
-        List<Post> posts = new ArrayList<>();
-        for (Long id : postId) {
-            posts.add(postRepository.getPostById(id));
-        }
+        List<Post> posts = tagRepository.findPostByTag(textTag);
         return posts;
     }
 

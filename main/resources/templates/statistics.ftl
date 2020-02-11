@@ -5,6 +5,39 @@
 <div class="container">
     <a href="/statistics/postStatistics">Статистика попостам</a>
 
+<br>
+
+    <h5>Зарегистрировано пользователей</h5>
+    <table class="p-3">
+        <thead>
+        <tr>
+            <th>Всего</th>
+            <th>С постами</th>
+            <th>Без постов</th>
+            <th>Всего постов</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+
+                <td>${users}</td>
+
+                <td>${usersWithPosts}</td>
+                <td>без постов</td>
+                <td>${allPosts}</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+<hr>
+<if datas??>
+    <#list datas as d>
+        ${d}
+    </#list>
+</if>
 </div>
 
 </@c.page>
