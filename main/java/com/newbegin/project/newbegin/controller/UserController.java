@@ -97,8 +97,8 @@ public class UserController {
     }
 
 
-    @PostMapping("profile/update")
-    public String updateProfile(@AuthenticationPrincipal User user,
+    @PostMapping("profile/updateSecurity")
+    public String updateProfileSecurity(@AuthenticationPrincipal User user,
                                 @RequestParam String password,
                                 @RequestParam String email,
                                 Model model) {
@@ -119,12 +119,22 @@ public class UserController {
             return "update";
         } else if (matcher.matches()) {
 
-            userService.updateProfile(user, password, email);
+            userService.updateProfileSecurity(user, password, email);
             model.addAttribute("message", "Профиль изменен");
         }
         return "update";
     }
 
+    @PostMapping("update/{user}")
+    public String updateProfile(@AuthenticationPrincipal User currentUser,
+                                @PathVariable User user,
+                                @RequestParam String description,
+                                Model model) {
+            if(currentUser.getId().equals(user.getId())) {
+                userService.updateProfile(user, description);
+            }
+        return "redirect:/posts/user-posts/" + user.getId();
+    }
 
     @GetMapping("profile/update")
     public String editProfile() {

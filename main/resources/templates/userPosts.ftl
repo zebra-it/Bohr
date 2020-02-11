@@ -16,11 +16,35 @@
                                 </#if>
                             </div>
                         </div>
-                        <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java,
-                            Node.js,
-                            etc.
-                        </div>
                     </div>
+                </div>
+
+                <div class="card-body">
+                    <div>
+                        <#if isCurrentUser>
+                            <form method="post" action="/user/update/${userChannel.id}">
+                                <div class="input-group mb-3">
+
+                                    <textarea type="text" class="form-control" name="description"
+                                              placeholder="${userChannel.description!''}"></textarea>
+                                    <div class="input-group-append">
+                                        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                                        <button class="input-group-text" type="submit">|</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        <#else >
+                            <div class="h6">
+                                ${userChannel.description!''}
+                            </div>
+
+                        </#if>
+
+
+                    </div>
+                </div>
+                <div class="card">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="h6 text-muted">
@@ -49,6 +73,7 @@
                             </#if></li>
                     </ul>
                 </div>
+
             </div>
 
 
@@ -57,5 +82,5 @@
             </div>
         </div>
     </div>
-    </div>
+
 </@c.page>

@@ -2,8 +2,7 @@
 <#include "common/securityPage.ftl" >
 <@c.page true>
     <div class=" container-sm ml-5 m-3 p-3 " style="max-width: 400px;">
-
-        <form method="post" action="/user/profile/update">
+        <form method="post" action="/user/profile/updateSecurity">
             <div class="row">
                 <div class="col">
                     <label for="psw">Пароль:</label>
@@ -36,8 +35,10 @@
                 <button class="btn btn-primary" type="submit">Сохранить</button>
             </div>
         </form>
-        <div>${user.createDate!''}</div>
+        <div>${user.createdAt!''} ${user.createdAtTime!''}</div>
         ${message?if_exists}
+
+
     </div>
 
 

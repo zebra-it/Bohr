@@ -36,11 +36,14 @@ public class User implements UserDetails {
     private Date createdAt = new Date();
 
     @Temporal(TemporalType.TIME)
-    private Date creatededAtTime = new Date();
+    private Date createdAtTime = new Date();
 
     @NotBlank
     @Email(message = "Неправильный почтовый адрес")
     private String email;
+
+    private String description;
+
 
     private String activationCode;
     private String resetCode;

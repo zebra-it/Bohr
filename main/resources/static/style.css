@@ -19,3 +19,8 @@ a {
     text-decoration: none;
     padding: 2px 1px 0;
 }
+
+textarea {
+    resize: vertical;
+    outline: none;
+}
