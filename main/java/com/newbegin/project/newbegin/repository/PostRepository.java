@@ -32,6 +32,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("select count(p) from Post p group by p.postedAt ")
     List<Integer> countByDate();
 
-    @Query("select p from Post p where p.author=:user order by  p.postedAtTime desc")
+    @Query("select p from Post p where p.author=:user order by  p.id desc")
     List<Post> findPostByAuthor(@Param("user") User user);
 }

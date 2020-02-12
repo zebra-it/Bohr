@@ -15,20 +15,21 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/posts/user-posts/${user.id!''}">Профиль</a>
                 </li>
-            </#if>
+
 
             <li class="nav-item active">
                 <a class="nav-link" href="/user">Список пользователей</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/posts/postsFeed/${user.id!''}">Лента</a>
+
+            <a class="nav-link" href="/posts/postsFeed/${user.id!''}">Лента</a>
             </li>
             <#if isAdmin>
                 <li class="nav-item">
                     <a class="nav-link" href="/statistics">Статистика</a>
                 </li>
             </#if>
-
+            </#if>
         </ul>
 
         <span class="navbar-text mr-3"><#if user??>${name}<#else>Гость</#if></span>

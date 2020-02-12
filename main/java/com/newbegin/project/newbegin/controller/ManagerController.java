@@ -24,6 +24,9 @@ public class ManagerController {
         model.addAttribute("usersWithPosts", managementService.countUsersWithPosts());
         model.addAttribute("usersWithoutPosts", managementService.countUsersWithoutPosts());
         model.addAttribute("tagsStatistics", managementService.getTagsStatistics());
+        Map<String, Integer> usersStatistics = managementService.getUsersStatistics();
+
+        model.addAttribute("usersStatistics", usersStatistics);
 
 
         return "statistics";
@@ -39,6 +42,7 @@ public class ManagerController {
 
         return "postStatistics";
     }
+
 
 
 }

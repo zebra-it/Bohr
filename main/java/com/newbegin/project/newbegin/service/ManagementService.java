@@ -58,4 +58,9 @@ public class ManagementService {
         List<Integer> countByDate = postRepository.countByDate();
         return zipToMap(date, countByDate);
     }
+    public Map<String, Integer> getUsersStatistics(){
+        List<Integer> count = userRepository.countUsersByDate();
+        List<String> dates = userRepository.dateCreated();
+        return zipToMap(dates,count);
+    }
 }

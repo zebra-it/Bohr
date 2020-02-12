@@ -1,49 +1,19 @@
 <#import "common/common.ftl" as c>
 
 <@c.page true>
-
-    <div class="container-fluid gedf-wrapper">
-
-        <div class="row">
-
-            <div class="col-4">
-                <h5>Зарегистрировано пользователей</h5>
-                <table class="table">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Всего пользователей</th>
-                        <th scope="col">С постами</th>
-                        <th scope="col">Без постов</th>
-                        <th scope="col">Всего постов</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-
-                        <td scope="row">${users}</td>
-                        <td scope="row">${usersWithPosts}</td>
-                        <td scope="row">${usersWithoutPosts}</td>
-                        <td scope="row">${allPosts}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <a href="/statistics/postStatistics">Смотреть статистику постов</a>
-            </div>
-
-
-            <div class="col-6">
-                <div id="container"
-                     class="img-thumbnail"></div>
+    <div class="container">
+        <div class="row ">
+            <div id="container"
+                 class="img-thumbnail col m-1">
 
             </div>
         </div>
-
     </div>
     <script inline="javascript">
         $(function () {
             Highcharts.chart('container', {
                 chart: {
-                    type: 'line'
+                    type: 'column'
                 },
                 title: {
                     text: 'Колличество постов в день'

@@ -74,7 +74,7 @@ public class PostService {
 
         LocalDate c = new LocalDate();
         String date = c.toString();
-        
+
         Set<User> users = user.getFollowing();
         for (User u : users) {
             for (Post p : postRepository.findPostByAuthor(u)) {

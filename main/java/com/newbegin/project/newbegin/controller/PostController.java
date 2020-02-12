@@ -2,6 +2,7 @@ package com.newbegin.project.newbegin.controller;
 
 import com.newbegin.project.newbegin.model.Post;
 import com.newbegin.project.newbegin.model.User;
+import com.newbegin.project.newbegin.repository.PostRepository;
 import com.newbegin.project.newbegin.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +25,9 @@ public class PostController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private PostRepository postRepository;
 
     @Value("${upload.path}")
     private String path;
@@ -111,17 +115,15 @@ public class PostController {
     public String userPosts(
             @AuthenticationPrincipal User currentUser,
             @PathVariable User user,
-            Model model,
-            @RequestParam(required = false) Post post) {
+            Model model) {
 
-        Set<Post> posts = user.getPosts();
+        List<Post> posts = postRepository.findPostByAuthor(user);
 
         model.addAttribute("userChannel", user);
         model.addAttribute("subscriptionsCount", user.getFollowing().size());
         model.addAttribute("subscribersCount", user.getFollowers().size());
         model.addAttribute("isSubscriber", user.getFollowers().contains(currentUser));
         model.addAttribute("posts", posts);
-        model.addAttribute("post", post);
         model.addAttribute("isCurrentUser", currentUser.equals(user));
 
         return "userPosts";

@@ -23,5 +23,11 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("select count(u) from User u")
     Integer countUsers();
 
-        List<User> findByUsernameContains(String username);
+    @Query("select count(u) from User u group by u.createdAt")
+    List<Integer> countUsersByDate();
+
+    List<User> findByUsernameContains(String username);
+
+    @Query("select u.createdAt from User u group by u.createdAt")
+    List<String> dateCreated();
 }
