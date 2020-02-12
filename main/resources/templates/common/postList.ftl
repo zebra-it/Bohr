@@ -38,7 +38,8 @@
                                         <a class="btn btn-outline-primary btn-sm"
                                            href="/posts/delete/${post.id}">delete</a>
                                     </#if>
-                                    ${post.postedAt}
+                                    ${post.postedAt?string('dd.MM.yy')}
+
                                 </div>
                             </div>
                         </td>

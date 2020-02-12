@@ -7,6 +7,7 @@ import com.newbegin.project.newbegin.repository.PostRepository;
 import com.newbegin.project.newbegin.repository.TagRepository;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -26,7 +27,8 @@ public class PostService {
     private TagRepository tagRepository;
 
     public List<Post> postList() {
-        return postRepository.findAll();
+
+        return postRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     @Transactional
@@ -50,7 +52,7 @@ public class PostService {
     }
 
     public List<Post> findPostByText(String text) {
-        List<Post> posts = postRepository.findByTextContains(text);
+        List<Post> posts = postRepository.findByTextContainsOrderByIdDesc(text);
         if (posts.isEmpty()) {
             posts = findPostsByTag(text);
         }
@@ -72,7 +74,7 @@ public class PostService {
 
         LocalDate c = new LocalDate();
         String date = c.toString();
-
+        
         Set<User> users = user.getFollowing();
         for (User u : users) {
             for (Post p : postRepository.findPostByAuthor(u)) {

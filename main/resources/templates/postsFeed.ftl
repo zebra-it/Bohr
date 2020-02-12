@@ -5,9 +5,6 @@
     <div class="container-fluid gedf-wrapper">
 
         <div class="row">
-        ${date}
-        ${time}
-
 
             <div class="col">
                     <#include "common/postList.ftl">

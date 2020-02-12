@@ -2,6 +2,7 @@ package com.newbegin.project.newbegin.repository;
 
 import com.newbegin.project.newbegin.model.Post;
 import com.newbegin.project.newbegin.model.User;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,8 +15,10 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Override
     void deleteById(Long id);
 
+    @Override
+    List<Post> findAll(Sort sort);
 
-    List<Post> findByTextContains(String text);
+    List<Post> findByTextContainsOrderByIdDesc(String text);
 
     @Query("select count(p) from Post p")
     Integer countPostsByUsers();
@@ -23,12 +26,12 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("select count(distinct p.author) from Post p")
     Integer countUsersWithPosts();
 
-    @Query("select p.postedAt from Post p group by p.postedAt order by p.postedAt desc ")
+    @Query("select p.postedAt from Post p group by p.postedAt")
     List<String> getDate();
 
-    @Query("select count(p) from Post p group by p.postedAt order by p asc ")
+    @Query("select count(p) from Post p group by p.postedAt ")
     List<Integer> countByDate();
 
-    @Query("select p from Post p where p.author=:user")
+    @Query("select p from Post p where p.author=:user order by  p.postedAtTime desc")
     List<Post> findPostByAuthor(@Param("user") User user);
 }
