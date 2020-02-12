@@ -1,8 +1,10 @@
 package com.newbegin.project.newbegin.repository;
 
 import com.newbegin.project.newbegin.model.Post;
+import com.newbegin.project.newbegin.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,5 +29,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("select count(p) from Post p group by p.postedAt order by p asc ")
     List<Integer> countByDate();
 
-
+    @Query("select p from Post p where p.author=:user")
+    List<Post> findPostByAuthor(@Param("user") User user);
 }

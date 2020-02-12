@@ -3,7 +3,7 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="<#if user??>/posts<#else>/</#if>" class="navbar-brand">Bohr</a>
+    <a href="<#if user??>/posts<#else>/</#if>" class="navbar-brand">InNutshell</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,9 +17,12 @@
                 </li>
             </#if>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="/user">Список пользователей</a>
-                </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/user">Список пользователей</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/posts/postsFeed/${user.id!''}">Лента</a>
+            </li>
             <#if isAdmin>
                 <li class="nav-item">
                     <a class="nav-link" href="/statistics">Статистика</a>

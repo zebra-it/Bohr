@@ -44,7 +44,6 @@ public class User implements UserDetails {
 
     private String description;
 
-
     private String activationCode;
     private String resetCode;
 

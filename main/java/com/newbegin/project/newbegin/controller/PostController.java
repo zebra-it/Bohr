@@ -54,6 +54,8 @@ public class PostController {
             }
             String uuidFile = UUID.randomUUID().toString();
             String resultName = uuidFile + "." + file.getOriginalFilename();
+
+            model.addAttribute("filename", file.getResource().getFilename());
             file.transferTo(new File(path + File.separator + resultName));
             post.setFilename(resultName);
         }
@@ -66,8 +68,9 @@ public class PostController {
             postService.addNewPost(post, typeTags, user, model);
         }
 
+
         model.addAttribute("posts", postService.postList());
-        model.addAttribute("tags",  postService.toptags());
+        model.addAttribute("tags", postService.toptags());
 
         return "posts";
     }
@@ -91,7 +94,7 @@ public class PostController {
             posts = postService.findPostByText(text);
         }
         model.addAttribute("posts", posts);
-        model.addAttribute("tags",  postService.toptags());
+        model.addAttribute("tags", postService.toptags());
         return "posts";
     }
 
@@ -100,7 +103,7 @@ public class PostController {
         List<Post> posts = postService.findPostsByTag(tag);
 
         model.addAttribute("posts", posts);
-        model.addAttribute("tags",  postService.toptags());
+        model.addAttribute("tags", postService.toptags());
         return "posts";
     }
 
@@ -122,6 +125,16 @@ public class PostController {
         model.addAttribute("isCurrentUser", currentUser.equals(user));
 
         return "userPosts";
+    }
+
+    @GetMapping("/postsFeed/{user}")
+    public String postsFeed(@AuthenticationPrincipal @PathVariable User user,
+                            Model model) {
+        List<Post> posts = postService.getPostFeed(user);
+
+        model.addAttribute("posts", posts);
+        model.addAttribute("tags", postService.toptags());
+        return "postsFeed";
     }
 
 

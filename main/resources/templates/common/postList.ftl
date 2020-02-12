@@ -1,13 +1,14 @@
 <!--- \\\\\\\Post-->
 <#include "securityPage.ftl">
-<div class="row mx-2">
+
 
     <#list posts as post>
         <div class="card m-2">
-            <div class="row">
+            <div class="row ">
                 <table>
 
                     <tr>
+
                         <td>
                             <#if post.filename??>
                                 <img class="img-thumbnail" src="\img\${post.filename!''}" style="height: 150px;">
@@ -17,7 +18,7 @@
                         <td>
                             <div class="card-body">
 
-                                <div class="card-text">
+                                <div class="card-text" >
                                     ${post.text}
                                     <#if user??>
                                         <a href="/posts/user-posts/${post.author.id!""}">${post.authorName!''}</a>
@@ -26,9 +27,7 @@
 
                                 </div>
                                 <div class="card-footer bg-transparent">
-                                    <small class="text-muted">
 
-                                    </small>
                                     <#if post.tagList??>
                                     <#list post.tagList as t>
                                         <a class="" href="/posts/search/${t.textTag!''}">#${t.textTag!''}</a>
@@ -39,6 +38,7 @@
                                         <a class="btn btn-outline-primary btn-sm"
                                            href="/posts/delete/${post.id}">delete</a>
                                     </#if>
+                                    ${post.postedAt}
                                 </div>
                             </div>
                         </td>
@@ -51,6 +51,3 @@
         <#else >
             Постов нет
     </#list>
-
-</div>
-

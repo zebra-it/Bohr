@@ -3,11 +3,7 @@
 
 <@c.page true>
     <div class="container-fluid gedf-wrapper">
-        <#if ke??>
-    <#list ke as k>
-        ${k!''}
-    </#list>
-        </#if>
+
         <div class="row">
 
             <div class="col-3">
@@ -51,10 +47,10 @@
 
                                     <div class="input-group mb-3">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                                   name="file" aria-describedby="inputGroupFileAddon01">
-                                            <label class="custom-file-label" for="inputGroupFile01">
-                                            </label>
+                                            <input type="file" class="custom-file-input"
+                                                   id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+                                            name="file">
+                                            <label class="custom-file-label" for="inputGroupFile01">${filename!''}</label>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +73,9 @@
 
 
             <div class="col">
+                <div class="row mx-2">
                 <#include "common/postList.ftl">
+                </div>
             </div>
 
 
