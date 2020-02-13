@@ -2,7 +2,7 @@
 
 <@c.page false>
 
-    ${message?if_exists}
+
     <div class=" container-sm ml-5 m-3 p-3 " style="max-width: 400px;">
 
         <form method="post" action="/resetPassword">
@@ -32,11 +32,25 @@
                     </#if>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <label for="code">Код:</label>
+                    <input class="form-control ${(codeError??)?string('is-invalid', '')}"
+                           type="text"
+                           name="code" id="code"/>
+                </div>
+                <#if codeError??>
+                    <div class="invalid-feedback">
+                        ${codeError}
+                    </div>
+                </#if>
+            </div>
 
             <div class="mt-3">
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 <button class="btn btn-outline-dark" type="submit">Обновить пароль</button>
             </div>
         </form>
+        ${message?if_exists}
     </div>
 </@c.page>

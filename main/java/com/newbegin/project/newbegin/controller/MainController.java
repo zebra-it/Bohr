@@ -1,6 +1,7 @@
 package com.newbegin.project.newbegin.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -9,7 +10,9 @@ public class MainController {
 
 
     @GetMapping("/")
-    public String greeting() {
+    public String greeting(Model model)
+    {
+
         return "main";
     }
 

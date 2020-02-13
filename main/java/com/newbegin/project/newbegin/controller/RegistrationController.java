@@ -69,7 +69,6 @@ public class RegistrationController {
         }
         return "login";
     }
-
     @PostMapping("/forgotPassword")
     public String forgotPassword(@RequestParam String email, Model model) throws MessagingException {
         boolean isEmailExists = userService.forgotPassword(email);
@@ -87,13 +86,15 @@ public class RegistrationController {
     }
 
 
-    @GetMapping("/resetPassword/{code}")
-    public String res(@PathVariable String code) {
+    @GetMapping("/resetPassword")
+    public String res() {
         return "resetPassword";
     }
 
     @PostMapping("/resetPassword")
-    public String resetPassword(@RequestParam String password, @RequestParam String username, Model model) {
+    public String resetPassword(@RequestParam String password,
+                                @RequestParam String username,
+                                @RequestParam String code, Model model) {
         String regex = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9@#$%]).{6,}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(password);
@@ -107,9 +108,14 @@ public class RegistrationController {
                     ", содержать верхний и нижний регистр, цифры и символы");
             return "resetPassword";
         }
-        boolean resetPass = userService.resetPass(username, password);
+        if(StringUtils.isEmpty(code)){
+            model.addAttribute("codeError", "Заполните это поле");
+            return "resetPassword";
+        }
+
+        boolean resetPass = userService.resetPass(username, password, code);
         if(!resetPass){
-            model.addAttribute("message", "wrong");
+            model.addAttribute("message", "Ошибка. Попробуйте еще раз сбросить пароль");
             return "resetPassword";
         }
         model.addAttribute("message", "Пароль обновлен");

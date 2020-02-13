@@ -1,14 +1,13 @@
 package com.newbegin.project.newbegin.model;
 
+import com.newbegin.project.newbegin.model.util.PostHelper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -34,7 +33,6 @@ public class Post {
     @Temporal(TemporalType.TIME)
     private Date postedAtTime = new Date();
 
-
     @OneToMany(cascade = CascadeType.ALL,
             mappedBy = "post",
             orphanRemoval = true)
@@ -48,7 +46,7 @@ public class Post {
     private String filename;
 
     public String getAuthorName() {
-        return author != null ? author.getUsername() : "<none>";
+        return PostHelper.getAuthorName(author);
     }
 
     public Post(String text, User user) {

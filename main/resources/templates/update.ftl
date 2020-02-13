@@ -35,7 +35,7 @@
                 <button class="btn btn-primary" type="submit">Сохранить</button>
             </div>
         </form>
-        <div>${user.createdAt!''} ${user.createdAtTime!''}</div>
+
         ${message?if_exists}
 
 

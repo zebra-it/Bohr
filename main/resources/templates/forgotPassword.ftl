@@ -10,9 +10,7 @@
                 <div class="col">
                     <label for="eml">Введите адрес почты</label>
                     <input type="email" id="eml" name="email"
-                           value="<#if user??>${user.email}</#if>"
                            class="form-control ${(emailError??)?string('is-invalid', '')}"
-                           placeholder="some@some.com"
                     style="width: 250px;"/>
                     <#if emailError??>
                         <div class="invalid-feedback">

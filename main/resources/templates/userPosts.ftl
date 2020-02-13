@@ -14,6 +14,7 @@
                                 <#if isCurrentUser>
                                     <a href="/user/profile/update"><i class="fas fa-pen ml-3"></i></a>
                                 </#if>
+
                             </div>
                         </div>
                     </div>
@@ -51,16 +52,26 @@
                                 Читатели
                             </div>
                             <div class="h5">
-                                <a href="/user/followers/${userChannel.id}/list">
-                                    ${subscribersCount}</a></div>
+                                <#if subscribersCount!=0>
+                                    <a href="/user/followers/${userChannel.id}/list">
+
+                                        ${subscribersCount}</a>
+                                <#else>
+                                    0
+                                </#if>
+                            </div>
                         </li>
                         <li class="list-group-item">
                             <div class="h6 text-muted">
                                 Читаемые
                             </div>
                             <div class="h5">
-                                <a href="/user/following/${userChannel.id}/list">
-                                    ${subscriptionsCount}</a>
+                                <#if subscriptionsCount!=0>
+                                    <a href="/user/following/${userChannel.id}/list">
+                                        ${subscriptionsCount}</a>
+                                <#else >
+                                    0
+                                </#if>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -71,6 +82,12 @@
                                     <a class="btn btn-info" href="/user/subscribe/${userChannel.id}">Подписаться</a>
                                 </#if>
                             </#if></li>
+
+                        <li class="list-group-item">
+                            Зарегистрирован
+                            ${user.createdAt!''}
+
+                        </li>
                     </ul>
                 </div>
 

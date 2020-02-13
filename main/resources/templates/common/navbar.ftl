@@ -21,9 +21,8 @@
                 <a class="nav-link" href="/user">Список пользователей</a>
             </li>
             <li class="nav-item active">
-
-            <a class="nav-link" href="/posts/postsFeed/${user.id!''}">Лента</a>
             </li>
+            <a class="nav-link" href="/posts/postsFeed/${user.id!''}">Лента</a>
             <#if isAdmin>
                 <li class="nav-item">
                     <a class="nav-link" href="/statistics">Статистика</a>

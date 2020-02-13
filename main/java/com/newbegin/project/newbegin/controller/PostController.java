@@ -16,7 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
 
 
 @Controller
@@ -118,6 +121,7 @@ public class PostController {
             Model model) {
 
         List<Post> posts = postRepository.findPostByAuthor(user);
+
 
         model.addAttribute("userChannel", user);
         model.addAttribute("subscriptionsCount", user.getFollowing().size());

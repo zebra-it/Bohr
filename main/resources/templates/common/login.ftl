@@ -53,7 +53,8 @@
             </#if>
             <div class="mt-3">
                 <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                <button class="btn btn-outline-dark" type="submit"><#if isReg>Зарегистрироваться<#else>Войти</#if></button>
+                <button class="btn btn-outline-dark"
+                        type="submit"><#if isReg>Зарегистрироваться<#else>Войти</#if></button>
             </div>
         </form>
         <div class="mt-3">
@@ -72,10 +73,10 @@
 <#macro logout>
 
 
-        <form action="/logout" method="post">
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button class="btn btn-sm btn-outline-secondary" type="submit"><#if user??>Выйти<#else>Войти</#if></button>
-        </form>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <button class="btn btn-sm btn-outline-secondary" type="submit"><#if user??>Выйти<#else>Войти</#if></button>
+    </form>
 
 
 </#macro>

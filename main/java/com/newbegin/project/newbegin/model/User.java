@@ -35,8 +35,6 @@ public class User implements UserDetails {
     @Temporal(TemporalType.DATE)
     private Date createdAt = new Date();
 
-    @Temporal(TemporalType.TIME)
-    private Date createdAtTime = new Date();
 
     @NotBlank
     @Email(message = "Неправильный почтовый адрес")
@@ -46,7 +44,6 @@ public class User implements UserDetails {
 
     private String activationCode;
     private String resetCode;
-
     private boolean active;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

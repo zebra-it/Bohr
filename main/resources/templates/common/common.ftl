@@ -43,7 +43,7 @@
         <#include "navbar.ftl">
     <#else>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="<#if user??>/posts<#else>/</#if>" class="navbar-brand">Bohr</a>
+            <a href="<#if user??>/posts<#else>/</#if>" class="navbar-brand">InNutshell</a>
         </nav>
     </#if>
     <#nested>
